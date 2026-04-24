@@ -1,4 +1,6 @@
 import express from "express";
+import { config } from "@repo/config";
+import { logger } from "@repo/logger";
 import authRoutes from "./routes/auth.routes";
 
 const app = express();
@@ -10,6 +12,6 @@ app.get("/health", (req, res) => {
 
 app.use("/auth", authRoutes);
 
-app.listen(3001, () => {
-    console.log("Auth Service running on port 3001");
+app.listen(config.port, () => {
+    logger.info(`Auth Service running on port ${config.port}`);
 });
